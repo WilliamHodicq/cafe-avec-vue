@@ -15,6 +15,7 @@
           :addToShoppingCart="addToShoppingCart"
           :name="item.name"
           :image="item.image"
+          :price="item.price"
           :quantity="item.quantity"
           :inStock="item.inStock"
           :key="item.name"
@@ -42,9 +43,6 @@ export default {
   },
   data() {
     return {
-      address: "18 avenue du Beurre, Paris, France",
-      email: "hello@cafewithavue.bakery",
-      phone: "01 88 88 88 88",
       restaurantName: "La belle vue",
       shoppingCart: 0,
       simpleMenu: [
@@ -55,7 +53,8 @@ export default {
             alt: "Un croissant"
           },
           inStock: true,
-          quantity: 1
+          quantity: 1,
+          price: 2.99
         },
         {
           name: "Baguette de pain",
@@ -64,7 +63,8 @@ export default {
             alt: "Quatre baguettes de pain"
           },
           inStock: true,
-          quantity: 1
+          quantity: 1,
+          price: 3.99
         },
         {
           name: "Éclair",
@@ -73,7 +73,8 @@ export default {
             alt: "Éclair au chocolat"
           },
           inStock: false,
-          quantity: 1
+          quantity: 1,
+          price: 4.99
         }
       ]
     }
@@ -92,37 +93,21 @@ export default {
 }
 </script>
 
-<style >
-.app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style lang="scss" >
 .description {
   max-width: 960px;
   font-size: 1.2rem;
   margin: 0 auto;
 }
 .footer {
-  text-align: center;
   font-style: italic;
+  text-align: center;
 }
 .menu {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.menu-item {
-  display: flex;
-  width: 500px;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-.menu-item__image {
-  max-width: 300px;
 }
 .shopping-cart {
   position: absolute;

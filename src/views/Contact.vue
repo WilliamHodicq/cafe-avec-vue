@@ -26,4 +26,8 @@ export default {
   </div>
 </template>
 
-<style></style>
+
+
+<style lang="scss">
+
+</style>
