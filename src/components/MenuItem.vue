@@ -1,7 +1,11 @@
 
 <script>
+
+import BaseButton from "./BaseButton";
+
 export default {
   name: "MenuItem",
+  components: {BaseButton},
   props: {
     addToShoppingCart: {
       type: Function,
@@ -30,7 +34,13 @@ export default {
   },
   data() {
     return {
-      onSale: false
+      onSale: false,
+      buttonText:"Ajouter au panier",
+    }
+  },
+  methods: {
+    updateShoppingCart(quantity) {
+      this.$emit("add-items-to-cart", quantity)
     }
   },
   computed: {
@@ -50,8 +60,6 @@ export default {
     }
   }
 }
-
-
 </script>
 
 <template>
@@ -64,23 +72,25 @@ export default {
       <p v-else>En rupture de stock</p>
       <div>
         <label for="add-item-quantity">Quantité : {{ quantity }}</label>
-        <input    @input="$quantity = $event.target.value"   :placeholder="quantity" id="add-item-quantity" type="number" />
-        <button @click="addToShoppingCart($quantity)" >
-          Ajouter au panier
-        </button>
-      </div>
-    </div>
-  </div>
-</template>
+        <input    @input="$quantity = $event.target.value"    id="add-item-quantity" type="number" />
+        <!-- <input v-model.number="quantity" id="add-item-quantity" type="number" /> -->
+        <BaseButton
+            @click="updateShoppingCart($quantity)"
+            :text="buttonText"
+        />
+       </div>
+     </div>
+   </div>
+ </template>
 
-<style lang="scss">
-.menu-item {
-  display: flex;
-  width: 500px;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  &__image {
-    max-width: 300px;
-  }
-}
-</style>
+ <style lang="scss">
+ .menu-item {
+   display: flex;
+   width: 500px;
+   justify-content: space-between;
+   margin-bottom: 30px;
+   &__image {
+     max-width: 300px;
+   }
+ }
+ </style>

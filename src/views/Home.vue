@@ -1,18 +1,18 @@
 <template>
-  <div class="app">
+  <div className="app">
     <h1>{{ restaurantName }}</h1>
-    <p class="description">
+    <p className="description">
       Bienvenue dans notre café {{ restaurantName }}! Nous sommes réputés pour
       notre pain et nos merveilleuses pâtisseries. Faites vous plaisir dès le
       matin ou avec un goûter réconfortant. Mais attention, vous verrez qu'il
       est difficile de s'arrêter.
     </p>
 
-    <section class="menu">
+    <section className="menu">
       <h2>Menu</h2>
       <MenuItem
           v-for="item in simpleMenu"
-          :addToShoppingCart="addToShoppingCart"
+          @add-items-to-cart="addToShoppingCart"
           :name="item.name"
           :image="item.image"
           :price="item.price"
@@ -22,12 +22,12 @@
       />
     </section>
 
-    <aside class="shopping-cart">
+    <aside className="shopping-cart">
       <h2>Panier : {{ shoppingCart }} articles</h2>
     </aside>
 
 
-    <footer class="footer">
+    <footer className="footer">
       <p>{{ copyright }}</p>
     </footer>
   </div>
@@ -88,27 +88,37 @@ export default {
   methods: {
     addToShoppingCart(amount) {
       this.shoppingCart += +amount
+    }},
+  /*
+  methods: {
+    addToShoppingCart(amount) {
+      this.shoppingCart += +amount
     }
   }
+
+   */
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 .description {
   max-width: 960px;
   font-size: 1.2rem;
   margin: 0 auto;
 }
+
 .footer {
   font-style: italic;
   text-align: center;
 }
+
 .menu {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .shopping-cart {
   position: absolute;
   right: 30px;
