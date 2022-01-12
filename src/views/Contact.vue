@@ -1,12 +1,11 @@
 <script>
+import {  mapState } from "vuex"
 export default {
   name: "Contact",
-  data() {
-    return {
-      address: "18 avenue du Beurre, Paris, France",
-      email: "hello@cafewithavue.bakery",
-      phone: "01 88 88 88 88"
-    }
+  computed: {
+    ...mapState({
+      contact: "contact"
+    })
   }
 }
 </script>
@@ -14,9 +13,9 @@ export default {
 <template>
   <div>
     <h2>Contactez nous</h2>
-    <p>Adresse : {{ address }}</p>
-    <p>Téléphone : {{ phone }}</p>
-    <p>Email : {{ email }}</p>
+    <p>Adresse : {{ contact.address }}</p>
+    <p>Téléphone : {{ contact.phone }}</p>
+    <p>Email : {{ contact.email }}</p>
     <p>Horaires :</p>
     <ul>
       <li>L-V: 06:00 à 16:00</li>
